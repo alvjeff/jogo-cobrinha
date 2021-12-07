@@ -23,7 +23,7 @@ function criarBG(){
 //a cobrinha vai ser delocar da seguinte maneira: acrescentando um elemento a frente e retirando o ultimo
 function criarCobrinha(){
     //for que vai percorrer todo o array
-    for( i = 0; i < snake; i++){
+    for( let i = 0; i < snake; i++){
         context.fillStyle ='green';
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
@@ -60,6 +60,13 @@ function iniciarJogo(){
     if(direction == 'left') snakeX -= box;
     if(direction == 'up') snakeY -= box
     if(direction == 'down') snakeY += box
+
+    if(snakeX != food.x || snakeY != food.y ){
+        snake.pop()
+    } else{
+        food.x = Math.floor(Math.random() * 15 + 1) * box
+        food.y = Math.floor(Math.random() * 15 +1) * box
+    }
 
     snake.pop()
 
